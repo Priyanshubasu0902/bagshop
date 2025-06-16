@@ -9,30 +9,30 @@
             <% } %>
             <div class="min-h-screen flex flex-col">
                 <div class="container px-10 py-20 flex flex-grow">
-                    <div class="w-[25%] flex h-screen flex-col items-start">
+                    <div class="w-[25%] flex h-screen pt-10 flex-col border-r border-gray-200 items-start">
                         <div class="flex flex-col">
                             <a class="block w-fit mb-2" href="/owners/product">All Products</a>
                             <!-- <a class="block w-fit mb-2" href="">Create new product</a> -->
                         </div>
                     </div>
-                    <main class="w-3/4 bg-white p-8 shadow ml-4">
+                    <main class="w-3/4 bg-white p-8 pt-10 ml-4">
                         <h2 class="text-xl font-bold mb-4">Create New Product</h2>
                         <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data">
                             <div class="mb-6">
                                 <h3 class="text-lg font-semibold mb-2">Product Details</h3>
                                 <div class="mb-4">
                                     <label class="block mb-2 font-medium">Product Image</label>
-                                    <input name="image" type="file" class="py-2 px-4 rounded" value="Select File">
+                                    <input name="image" type="file" class="py-2 px-4 rounded" value="Select File" required>
                                 </div>
                                 <div class="grid grid-cols-2 gap-4">
                                     <input name="name" type="text" placeholder="Product Name"
-                                        class="border p-2 rounded w-full">
+                                        class="border p-2 rounded w-full" required>
                                     <input name="price" type="text" placeholder="Product Price"
-                                        class="border p-2 rounded w-full">
+                                        class="border p-2 rounded w-full" required>
                                     <input name="discount" type="text" placeholder="Discount Price"
                                         class="border p-2 rounded w-full">
                                     <input name="quantity" type="number" placeholder="Quantity"
-                                        class="border p-2 rounded w-full">
+                                        class="border p-2 rounded w-full" required>
                                 </div>
                             </div>
 

@@ -6,8 +6,8 @@
             </span> 
         </div>   
     <% } %>
-    <div class="w-full h-screen flex items-start px-20 py-20">
-        <div class="w-[25%] flex h-screen flex-col items-start">
+    <div class="w-full h-screen flex items-start py-20">
+        <div class="w-[25%] flex h-screen flex-col lg:w-[15%] px-10 border-r pt-10 border-gray-300 items-start">
             <div class="flex items-center gap-2">
                 <h3>sort by</h3>
                 <form action="/shop">
@@ -18,17 +18,17 @@
                 </form>
             </div>
             <div class="flex flex-col mt-20">
-                <a class="block w-fit mb-2" href="">New Collection</a>
-                <a class="block w-fit mb-2" href="">All Products</a>
+                <a class="block w-fit mb-2" href="/shop/latest">New Collection</a>
+                <a class="block w-fit mb-2" href="/shop">All Products</a>
                 <a class="block w-fit mb-2" href="/shop/discount">Discounted Products</a>
             </div>
             <div class="mt-32">
                 <a class="block w-fit mb-2" href="">Filter by :</a>
-                <a class="block w-fit mb-2" href="">Availability</a>
-                <a class="block w-fit mb-2" href="">Discount</a>
+                <a class="block w-fit mb-2" href="/shop/available">Availability</a>
+                <a class="block w-fit mb-2" href="/shop/discount">Discount</a>
             </div>
         </div>
-        <div class="w-[75%] flex flex-col gap-5 h-screen">
+        <div class="w-[75%] flex pl-10 pt-10 flex-col gap-5 h-screen">
             <div class="flex items-start gap-5">
                 <% products.forEach(function(product){ %>
                     <div class="w-60">
@@ -46,7 +46,7 @@
                                 </h4>
                             </div>
                             <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="/addtocart/<%=product._id%>">
-                                <i class="ri-add-line"></i>
+                                <i class="ri-add-line text-black font-bold"></i>
                             </a>
                         </div>
                     </div>

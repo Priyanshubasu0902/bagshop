@@ -21,7 +21,6 @@ router.get("/shop", isLoggedIn, async (req, res) => {
 router.get("/shop/discount", isLoggedIn, async (req, res) => {
   let success = req.flash("success");
   let foundedProducts = await productModel.find({discount:{$gt:0}})
-  console.log(foundedProducts);
   res.render("shop", {products: foundedProducts, success: success, type:"user"})
 })
 

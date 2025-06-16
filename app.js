@@ -27,7 +27,6 @@ app.use(
         secret: process.env.EXPRESS_SESSION_SECRET,  // secret is handled using environment variables
     })
 );
-
 app.use(flash());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");

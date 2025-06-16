@@ -12,11 +12,9 @@ module.exports = async (req, res, next) => {
     // If req.cookies.token has some value
     let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY); // returns the properties used to create token
     // find the user in the userModel using the email (properties used to create a token)
-    console.log(decoded.email);
     let user = await userModel
       .findOne({ email: decoded.email, _id: decoded.id }) // returns the whole user
       .select("-password"); // this would return the whole user except the "password" field
-    console.log(user);
     if (!user) {
       console.log("user not found");
       req.flash("error", "You need to login first");
