@@ -15,13 +15,37 @@ router.get("/", (req, res) => {
 router.get("/shop", isLoggedIn, async (req, res) => {
   let success = req.flash("success");
   let foundProducts = await productModel.find();
-  res.render("shop", { products: foundProducts, success: success, type:'user' });
+  res.render("shop", {
+    products: foundProducts,
+    success: success,
+    type: "user",
+  });
 });
 
 router.get("/shop/discount", isLoggedIn, async (req, res) => {
   let success = req.flash("success");
-  let foundedProducts = await productModel.find({discount:{$gt:0}})
-  res.render("shop", {products: foundedProducts, success: success, type:"user"})
+  let foundedProducts = await productModel.find({ discount: { $gt: 0 } });
+  res.render("shop", {
+    products: foundedProducts,
+    success: success,
+    type: "user",
+  });
+});
+
+router.get("/shop/available", isLoggedIn, async (req, res) => {
+  let success = req.flash("success");
+  let foundedProducts = await productModel.find({ quantity: { $gt: 0 } });
+  res.render("shop", { products: foundedProducts, success, type: "user" });
+});
+
+router.post("/shop/price", isLoggedIn, async (req, res)=> {
+  let success = req.flash("success");
+  let {start, end} = req.body;
+  // console.log(start);
+  // console.log(end);
+  // res.send("found");
+  let foundedProducts = await productModel.find({ price: {$gte: start, $lte:end }});
+  res.render("shop", { products: foundedProducts, success, type: "user" });
 })
 
 router.get("/addtocart/:productid", isLoggedIn, async (req, res) => {
@@ -36,7 +60,7 @@ router.get("/cart", isLoggedIn, async (req, res) => {
   let foundUser = await userModel
     .findOne({ email: req.user.email })
     .populate("cart");
-  res.render("cart", { user: foundUser, type:"user" });
+  res.render("cart", { user: foundUser, type: "user" });
 });
 
 module.exports = router;

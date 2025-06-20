@@ -7,13 +7,13 @@
         </div>   
     <% } %>
     <div class="w-full h-screen flex items-start py-20">
-        <div class="w-[25%] flex h-screen flex-col lg:w-[15%] px-10 border-r pt-10 border-gray-300 items-start">
+        <div class="w-[25%] flex h-screen flex-col lg:w-[15%] px-10 max-lg:px-5 border-r pt-10 border-gray-300 items-start">
             <div class="flex items-center gap-2">
-                <h3>sort by</h3>
-                <form action="/shop">
-                    <select class="border-[1px] px-2 py-1" name="sortby" id="">
-                        <option value="popular">Popular</option>
+                <h3>Sort by</h3>
+                <form action="/shop/sort" method="post" id="form">
+                    <select class="border-[1px] px-2 py-1" name="sortby" onchange="SortBy()" id="">
                         <option value="newest">Newest</option>
+                        <option value="popular">Popular</option>
                     </select>
                 </form>
             </div>
@@ -26,10 +26,19 @@
                 <a class="block w-fit mb-2" href="">Filter by :</a>
                 <a class="block w-fit mb-2" href="/shop/available">Availability</a>
                 <a class="block w-fit mb-2" href="/shop/discount">Discount</a>
+                <form action="/shop/price" method="post" >
+                    Price Range:
+                    <div class="flex gap-3 py-2 ">
+                        <input class="w-1/3 text-center border border-black" placeholder="0" value="0" min="0" type="number" name="start">
+                        to
+                        <input class="w-1/3 border text-center border-black" placeholder="10000" value="1000" min="0" type="number" name="end">
+                        <input class="bg-green-500 text-white p-1 font-bold w-1/3 max-lg:text-sm cursor-pointer" type="submit" value="filter"/>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="w-[75%] flex pl-10 pt-10 flex-col gap-5 h-screen">
-            <div class="flex items-start gap-5">
+            <div class="flex flex-wrap items-start gap-5">
                 <% products.forEach(function(product){ %>
                     <div class="w-60">
                         <div class="w-full h-52 flex items-center justify-center bg-[<%=product.bgcolor%>]">
@@ -54,4 +63,9 @@
             </div>
         </div>
     </div>
+    <script>
+        const SortBy = () => {
+            document.getElementById("form").submit();
+        }
+    </script>
     <%- include('./partials/footer') %>

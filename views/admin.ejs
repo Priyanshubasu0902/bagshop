@@ -14,7 +14,7 @@
   </div>
   <div class="w-[75%] pt-10 pl-10 flex flex-col gap-5 h-screen">
     <a class="text-red-500" href="/products/deleteAll">Delete all</a>
-    <div class="flex items-start gap-5">
+    <div class="flex flex-wrap items-start gap-5">
       <% owner.products.forEach( (product) => { %>
       <div class="w-60 bg-red-500">
         <div
@@ -30,9 +30,10 @@
           class="flex gap-2 justify-between bg-[<%= product.panelcolor %>] items-center px-4 py-4 text-[<%= product.textcolor %>]"
         >
           <div class="w-1/2">
-            <h3><%=product.name%></h3>
-            <h4>₹ <%=product.price %></h4>
-            <h4><%=product.quantity %> units</h4>
+            <h3>Name: <%=product.name%></h3>
+            <h4>Price: ₹ <%=product.price %></h4>
+            <h4>Quantity: <%=product.quantity %> units</h4>
+            <h4>Discount: <%=product.discount %> Rs</h4>
           </div>
           <div
             class="w-1/2 h-full flex flex-col gap-2 items-center justify-center"
