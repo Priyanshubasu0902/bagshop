@@ -13,6 +13,7 @@ BagShop is a full-stack e-commerce web application built with Node.js, Express, 
 
 ### Owner (Admin) Features
 - **Admin Panel:** A dedicated panel for store owners with secure login.
+- **Authentication:** Secure owner login, logout using JWT.
 - **Product Management:**
     - Create new products with details like name, price, quantity, discount, and custom panel colors.
     - Upload product images.
