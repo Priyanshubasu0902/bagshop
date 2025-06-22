@@ -1,5 +1,4 @@
 # BagShop E-commerce Platform
-[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/Priyanshubasu0902/bagshop.git)
 
 BagShop is a full-stack e-commerce web application built with Node.js, Express, and MongoDB. It features separate functionalities for regular users and store owners, allowing for product management, user authentication, and a shopping cart system.
 
