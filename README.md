@@ -8,7 +8,7 @@ BagShop is a full-stack e-commerce web application built with Node.js, Express, 
 - **Authentication:** Secure user registration and login, logout using JWT.
 - **Shop:** Browse all available products.
 - **Filtering:** Filter products by availability, discount, and price range.
-- **Sorting:** Sort products by their time of arrival either, default or latest products first.
+- **Sorting:** Sort products by their time of arrival, either default or latest products first.
 - **Shopping Cart:** Add products to a personal cart and view its contents.
 
 ### Owner (Admin) Features
