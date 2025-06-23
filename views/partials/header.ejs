@@ -17,10 +17,10 @@
         <% if (loggedin) { %>
             <div class="flex gap-5">
                 <% if (type=="user") {%> 
-                    <a href="/shop">Shop</a>
-                    <a href="/cart">Cart</a>
-                    <a href="/users/profile">My Account</a>
-                    <a class="text-red-600" href="/users/logout">Logout</a>
+                    <a class="font-semibold" href="/shop">Shop</a>
+                    <a class="font-semibold" href="/cart">Cart</a>
+                    <a class="font-semibold" href="/users/profile">My Account</a>
+                    <a class="font-semibold text-red-600" href="/users/logout">Logout</a>
                     <%} else if(type=="owner") {%>
                         <!-- <a href="/shop">Shop</a>
                         <a href="/cart">Cart</a> -->
