@@ -16,7 +16,6 @@ module.exports = async (req, res, next) => {
       .findOne({ email: decoded.email, _id: decoded.id }) // returns the whole user
       .select("-password"); // this would return the whole user except the "password" field
     if (!user) {
-      console.log("user not found");
       req.flash("error", "You need to login first");
       return res.redirect("/");
     }

@@ -6,13 +6,22 @@
 </div>
 <% } %>
 <div class="w-full h-screen flex items-start px-20 py-10">
-  <div class="w-[25%] flex h-screen flex-col items-start border-r border-gray-200 pt-10">
+  <div
+    class="w-[25%] flex h-screen flex-col items-start border-r border-gray-200 pt-10"
+  >
     <div class="flex flex-col">
       <a class="block w-fit mb-2" href="">All Products</a>
       <a class="block w-fit mb-2" href="/owners/admin">Create new product</a>
     </div>
   </div>
   <div class="w-[75%] pt-10 pl-10 flex flex-col gap-5 h-screen">
+    <% if( owner.products.length == 0) { %>
+    <p
+      class="text-6xl text-gray-300 font-bold h-screen flex items-center justify-center"
+    >
+      Inventory is Empty
+    </p>
+    <% } else { %>
     <a class="text-red-500" href="/products/deleteAll">Delete all</a>
     <div class="flex flex-wrap items-start gap-5">
       <% owner.products.forEach( (product) => { %>
@@ -39,17 +48,24 @@
             class="w-1/2 h-full flex flex-col gap-2 items-center justify-center"
             href=""
           >
-            <a class="bg-green-300 w-3/4 h-full px-2 rounded-lg text-black text-center" href="/owners/editProduct/<%=product._id%>">
-                Edit
+            <a
+              class="bg-green-300 w-3/4 h-full px-2 rounded-lg text-black text-center"
+              href="/owners/editProduct/<%=product._id%>"
+            >
+              Edit
             </a>
-            <a class="bg-red-300 w-3/4 px-2 rounded-lg text-center text-black" href="/products/delete/<%=product._id%>">
-                Delete
+            <a
+              class="bg-red-300 w-3/4 px-2 rounded-lg text-center text-black"
+              href="/products/delete/<%=product._id%>"
+            >
+              Delete
             </a>
           </div>
         </div>
       </div>
       <% }) %>
     </div>
+    <% } %>
   </div>
 </div>
 <%- include('./partials/footer') %>

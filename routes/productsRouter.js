@@ -70,7 +70,7 @@ router.post(
         updatedFields
       );
       req.flash("success", "Product edited successfully");
-      res.redirect("/owners/admin");
+      res.redirect("/owners/product");
     } catch (err) {
       res.send(err.mesage);
     }

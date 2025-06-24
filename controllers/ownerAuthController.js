@@ -56,7 +56,8 @@ module.exports.ownerLogin =  async (req, res) => {
 module.exports.ownerLogout =  async (req, res) => {
     try {  
        res.cookie("token", "");
-       res.redirect('/owners/login');
+       req.flash("success", "Logged Out Successfully")
+       res.redirect('/');
     }
     catch(err) {
         req.flash("error", "something went wrong");
