@@ -80,17 +80,42 @@ router.post("/shop/sort", isLoggedIn, async (req, res) => {
 
 router.get("/addtocart/:productid", isLoggedIn, async (req, res) => {
   let foundUser = await userModel.findOne({ email: req.user.email });
-  foundUser.cart.push(req.params.productid);
+  let index = foundUser.cart.findIndex(obj => obj.productId.toString().toString()===req.params.productid);
+  if(index>=0) {
+    foundUser.cart[index].quantity++;
+  }
+  else{
+    foundUser.cart.push({
+      productId: req.params.productid,
+      quantity:1
+    }
+    );
+  }
   await foundUser.save();
   req.flash("success", "Added to cart");
-  res.redirect("/shop");
+  res.redirect("/cart");
 });
 
+router.get('/removefromcart/:productid', isLoggedIn, async(req, res)=> {
+  let foundedUser = await userModel.findOne({ email: req.user.email});
+  let index = foundedUser.cart.findIndex(obj => obj.productId.toString().toString()===req.params.productid);
+  if(foundedUser.cart[index].quantity>1) {
+    foundedUser.cart[index].quantity--;
+  }
+  else{
+    foundedUser.cart.splice(index,1);
+  }
+  await foundedUser.save();
+  req.flash("success", "Removed from cart");
+  res.redirect('/cart');
+})
+
 router.get("/cart", isLoggedIn, async (req, res) => {
+  let success = req.flash("success");
   let foundUser = await userModel
     .findOne({ email: req.user.email })
-    .populate("cart");
-  res.render("cart", { user: foundUser, type: "user" });
+    .populate("cart.productId");
+  res.render("cart", { user: foundUser, type: "user", success });
 });
 
 module.exports = router;
